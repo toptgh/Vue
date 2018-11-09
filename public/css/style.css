@@ -1,0 +1,3 @@
+.slideInLeft, .slideOutLeft, .slideInRight, .slideOutRight{
+    animation-duration: 200ms;
+}
