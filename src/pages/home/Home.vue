@@ -1,62 +1,59 @@
 <template>
 <div>
-    <!-- 根页面 -->
     <div class="page" id="home">
         
         <app-header title="首页">
-            <router-link slot="left" to="/home/location">定位</router-link>
-            <router-link slot="right" to="/home/more">更多</router-link>
+            <router-link class="router gps" slot="left" to='/Home/gps'>定位</router-link >
+            <router-link  class="router more" slot="right" to='/Home/more'>更多</router-link >
         </app-header>
 
-
-        <div class="content has-header">
+        <div class="content has-header" >
             <ul class="list">
-                <router-link v-for="goods in goodsList" :key="goods.id"
-                    class="item" :to="'/home/detail/'+goods.title+'/'+goods.id">
+                <router-link  :to="'/Home/Detail/'+goods.title+'/'+goods.id" class="item" v-for="goods in goodsList" :key="goods.id">
                     {{goods.title}}
                 </router-link>
             </ul>
         </div>
-
+        
     </div>
-
-    <!-- 子页面 -->
-    <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
-        <router-view/>
-    </transition>
+    <router-view/>
 </div>
-
 </template>
 
 <script>
-
 export default {
-    data(){
-        return {
-            goodsList: [
-                {title: '鞋子', id: '3412352', price: 999},
-                {title: '外套', id: '4327453', price: 399},
-                {title: '衬衫', id: '9101383', price: 99},
-                {title: '裤子', id: '3423467', price: 678},
-                {title: '鞋子', id: '5423459', price: 99}
-            ]
-        }
-    }
-}
+  data() {
+    return {
+      goodsList: [
+        { title: "衬衫", id: "11111", price: 99 },
+        { title: "毛衣", id: "22222", price: 199 },
+        { title: "短袖", id: "33333", price: 299 },
+        { title: "牛仔", id: "44444", price: 399 },
+        { title: "短裤", id: "55555", price: 499 },
+        { title: "鞋子", id: "66666", price: 599 },
+        { title: "皮带", id: "77777", price: 699 }
+      ]
+    };
+  },
+  methods: {},
+ 
+};
 </script>
 
 <style scoped>
-.list .item{
-    display: block;
-    padding-left: 10px;
-    line-height: 50px;
-    border-bottom: 1px solid #ddd;
-    position: relative;
+.item {
+  display: block;
+  padding-left: 10px;
+  line-height: 50px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  color: #333;
 }
-.list .item::after{
-    content: '>';
-    position: absolute;
-    right: 10px;
-    color: #999;
+
+.item:after {
+  content: ">";
+  position: absolute;
+  right: 10px;
+  color: #999;
 }
 </style>

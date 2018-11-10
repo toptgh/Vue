@@ -1,58 +1,51 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '../pages/Home/Home.vue'
+import Hot from '../pages/Hot/Hot.vue'
+import Discover from '../pages/Discover/Discover.vue'
+import Setting from '../pages/Setting/Setting.vue'
+import more from '../pages/Home/more.vue'
+import gps from '../pages/Home/gps.vue'
+import detail from '../pages/Home/Detail.vue'
 
-import Home from '../pages/home/Home'
-import Location from '../pages/home/Location'
-import More from '../pages/home/More'
-import Detail from '../pages/home/Detail'
-import Hot from '../pages/hot/Hot'
-import Discover from '../pages/discover/Discover'
-import Setting from '../pages/setting/Setting'
+Vue.use(Router)
 
-Vue.use(Router);
-
-
-
-const router = new Router({
-    routes: [
+export default new Router({
+  routes: [
+    {
+      component:Home,
+      path:'/Home',
+      children:[
         {
-            path: '/home',
-            // alias: '/',//设置别名
-            component: Home,
-            children: [
-                {
-                    path: 'location',
-                    component: Location
-                },
-                {
-                    path: 'more',
-                    component: More
-                },
-                {
-                    path: 'detail/:name/:id',
-                    component: Detail
-                }
-            ]
+          component:more,
+          path:'more'
         },
         {
-            path: '/hot',
-            component: Hot
+          component:gps,
+          path:'gps'
         },
         {
-            path: '/discover',
-            component: Discover
-        },
-        {
-            path: '/setting',
-            component: Setting
-        },
-        // {
-        //     // 配置重定向
-        //     path: '**',
-        //     redirect: '/home'
-        // }
-    ]
-});
-
-
-export default router;
+          component:detail,
+          path:'Detail/:name/:id'
+        }
+      ]
+    },
+    {
+      component:Hot,
+      path:'/Hot'
+    },
+    {
+      component:Discover,
+      path:'/Discover'
+    },
+    {
+      component:Setting,
+      path:'/Setting'
+    },
+    //重定向为首页
+    {
+      path:'**',
+      redirect:'/Home'
+    }
+  ]
+})

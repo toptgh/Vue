@@ -1,7 +1,7 @@
 <template>
     <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
-        <div class="page sub" id="more">
-            <app-header title="更多">
+        <div class="page sub" id="gps">
+            <app-header title="定位">
                 <router-link class="backhome" to='/' slot="left">&lt;</router-link>
             </app-header>
         </div>
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style scoped>
-#more{
+#gps{
     background: darkcyan;
 }
 </style>

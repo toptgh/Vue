@@ -1,10 +1,8 @@
 <template>
-<div class="page" id="setting">
-    <div class="content">
-        设置
-        <h1>hello</h1>
+    
+     <div id="page" class="setting">
+       <app-header title="设置"></app-header>
     </div>
-</div>
 </template>
 
 <script>
@@ -13,6 +11,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

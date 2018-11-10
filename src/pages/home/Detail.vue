@@ -1,31 +1,41 @@
 <template>
-<div class="page subpage" id="detail">
-    <app-header :title="title">
-        <router-link to="/home" slot="left">&lt;</router-link>
-    </app-header>
-    <div class="content has-header">
-        <input type="text" v-model="title"/>
-        <button>确定</button>
-    </div>
-</div>
+    <transition enter-active-class="slideInRight" leave-active-class="slideOutRight">
+        <div class="page sub" id="detail">
+            <app-header :title="title">
+                <router-link class="backhome" to='/' slot="left">&lt;</router-link>
+            </app-header>
+
+            <div class="content has-header">
+                <input type="text" v-model="value"/>
+                <button @click="btn()">确定</button>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>
 export default {
-    data(){
-        return {
-            title: this.$route.params.name
-        }
-    },
-    created(){
-        console.log(this.$route);
-        //取得id值，发送ajax请求
-    }
-}
+  data() {
+    var goodsName = this.$route.params.name;
+    return {
+      title: goodsName,
+      value: goodsName
+    };
+  },
+  methods: {
+      btn(){
+         
+      }
+  },
+  created() {
+    // console.log(this.$route.params.id);
+  }
+};
 </script>
 
 <style scoped>
-#detail{
-    background: pink;
+#detail {
+  background: darkcyan;
 }
 </style>
+

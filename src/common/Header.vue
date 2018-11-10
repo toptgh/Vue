@@ -1,56 +1,48 @@
 <template>
-<header class="header">
-    <span class="header-btn header-btn-left">
-        <slot name="left"/>
-    </span>
-    <h1 class="title">{{title}}</h1>
-    <span class="header-btn header-btn-right">
-        <slot name="right"/>
-    </span>
-</header>
+    <div class="header">
+        <slot name='left'/>
+        <span class="header_title">{{title}}</span>
+        <slot name='right'/>
+    </div>
 </template>
 
 <script>
 export default {
-    name: 'app-header',
-    props: {
-        title: String
+    props:{
+        title:String
     }
-}
+};
 </script>
 
 <style>
-.header{
-    width: 100%;
-    height: 44px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: dodgerblue;
+.header {
+  width: 100%;
+  height: 44px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #1e90ff;
+  box-sizing: border-box;
+  text-align: center;
 }
-.header .title{
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    line-height: 44px;
-    font-size: 16px;
-    color: #fff;
+
+.header > .header_title {
+  font-size: 20px;
+  line-height: 44px;
+  color: #fff;
 }
-.header-btn{
-    position: absolute;
-    top: 0;
-    line-height: 44px;
-    padding: 0 10px;
-    color: #fff;
-    font-size: 12px;
+
+.header > .router {
+  position: absolute;
+  top: 0;
+  line-height: 44px;
+  padding: 0 10px;
+  color: #fff;
 }
-.header-btn *{
-    color: #fff;
+.header .gps {
+  left: 10px;
 }
-.header-btn-left{
-    left: 10px;
-}
-.header-btn-right{
-    right: 10px;
+.header .more {
+  right: 10px;
 }
 </style>
