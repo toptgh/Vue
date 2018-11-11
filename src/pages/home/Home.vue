@@ -35,8 +35,21 @@ export default {
       ]
     };
   },
-  methods: {},
- 
+  methods: {
+    result() {
+      this.goodsList.map((goods, index) => {
+        if (goods.id == this.$route.query.id) {
+          goods.title = this.$route.query.name;
+        }
+      });
+    }
+  },
+  created() {
+    this.result();
+  },
+  watch:{
+      '$route':'result'
+  }
 };
 </script>
 

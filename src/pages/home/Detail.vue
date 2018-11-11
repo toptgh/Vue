@@ -7,7 +7,7 @@
 
             <div class="content has-header">
                 <input type="text" v-model="value"/>
-                <button @click="btn()">确定</button>
+                <button @click="btn(value)">确定</button>
             </div>
         </div>
     </transition>
@@ -23,13 +23,19 @@ export default {
     };
   },
   methods: {
-      btn(){
-         
+      btn(value){
+         this.$router.push({
+             path:'/Home',
+             query:{
+                 id:this.$route.params.id,
+                 name:value
+             }
+         })
       }
   },
-  created() {
-    // console.log(this.$route.params.id);
-  }
+//   created() {
+//     //ajax传id
+//   }
 };
 </script>
 
