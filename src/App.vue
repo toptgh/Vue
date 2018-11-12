@@ -3,7 +3,7 @@
     <router-view/>
 
     <div class="tabs">
-      <router-link :to="navItem.path" class="tab" v-for="(navItem,index) in navList" :key='index'>
+      <router-link :to="{path:navItem.path}" class="tab" v-for="(navItem,index) in navList" :key='index'>
         <span :class='navItem.icon'></span>
         <span>{{navItem.name}}</span>
       </router-link>

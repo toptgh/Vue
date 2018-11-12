@@ -3,15 +3,15 @@
     <div class="page" id="home">
         
         <app-header title="首页">
-            <router-link class="router gps" slot="left" to='/Home/gps'>定位</router-link >
-            <router-link  class="router more" slot="right" to='/Home/more'>更多</router-link >
+            <span class="router gps" slot="left" @click="gpsAction()">定位</span>
+            <span  class="router more" slot="right"  @click="moreAction()">更多</span>
         </app-header>
 
         <div class="content has-header" >
             <ul class="list">
-                <router-link  :to="'/Home/Detail/'+goods.title+'/'+goods.id" class="item" v-for="goods in goodsList" :key="goods.id">
+                <li @click="goDetail(goods)"  class="item" v-for="goods in goodsList" :key="goods.id">
                     {{goods.title}}
-                </router-link>
+                </li>
             </ul>
         </div>
         
@@ -36,19 +36,24 @@ export default {
     };
   },
   methods: {
-    result() {
-      this.goodsList.map((goods, index) => {
-        if (goods.id == this.$route.query.id) {
-          goods.title = this.$route.query.name;
-        }
-      });
+    gpsAction() {
+      this.$router.push({ name: "Gps" });
+    },
+    moreAction() {
+      this.$router.push({ name: "More" });
+    },
+    goDetail(goods){
+      this.$router.push({name:'Detail',params:{name:goods.title,id:goods.id}})
     }
   },
   created() {
-    this.result();
-  },
-  watch:{
-      '$route':'result'
+    this.$center.$on("data", (name, id) => {
+      this.goodsList.map((goods, index) => {
+        if (goods.id == id) {
+          goods.title = name;
+        }
+      });
+    });
   }
 };
 </script>

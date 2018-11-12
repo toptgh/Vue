@@ -11,20 +11,24 @@ import detail from '../pages/Home/Detail.vue'
 Vue.use(Router)
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       component:Home,
       path:'/Home',
       children:[
         {
+          name:'More',
           component:more,
           path:'more'
         },
         {
+          name:'Gps',
           component:gps,
           path:'gps'
         },
         {
+          name:'Detail',
           component:detail,
           path:'Detail/:name/:id'
         }
